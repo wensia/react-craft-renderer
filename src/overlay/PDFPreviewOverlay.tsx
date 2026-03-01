@@ -7,6 +7,22 @@
  *
  * The PDF is loaded from a Uint8Array (via IPC) and rendered to canvas.
  * The pdf.js worker handles decoding and rendering in a background thread.
+ *
+ * IMPORTANT: react-pdf and pdfjs-dist are optional peer dependencies.
+ * Consumers must install them separately and configure the worker before use:
+ *
+ * @example
+ * import { configurePdfWorker } from 'react-craft-renderer'
+ *
+ * // Vite
+ * import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+ * configurePdfWorker(pdfjsWorker)
+ *
+ * // Webpack / CRA
+ * configurePdfWorker(new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString())
+ *
+ * // CDN
+ * configurePdfWorker('https://unpkg.com/pdfjs-dist@4/build/pdf.worker.min.mjs')
  */
 
 import { useState, useCallback, useMemo, useEffect } from 'react'
@@ -17,9 +33,26 @@ import { CopyButton } from './CopyButton'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 
-// Configure pdf.js worker using Vite's ?url import for cross-platform dev/prod compatibility
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
+/**
+ * Configure the pdf.js worker source URL.
+ * Must be called once before rendering any PDFPreviewOverlay.
+ *
+ * The worker URL is bundler-specific, so consumers must provide it:
+ *
+ * @example
+ * // Vite
+ * import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+ * configurePdfWorker(pdfjsWorker)
+ *
+ * // Webpack / CRA
+ * configurePdfWorker(new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString())
+ *
+ * // CDN
+ * configurePdfWorker('https://unpkg.com/pdfjs-dist@4/build/pdf.worker.min.mjs')
+ */
+export function configurePdfWorker(workerSrc: string) {
+  pdfjs.GlobalWorkerOptions.workerSrc = workerSrc
+}
 
 export interface PDFPreviewOverlayProps {
   isOpen: boolean

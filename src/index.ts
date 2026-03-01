@@ -152,6 +152,7 @@ export {
 
 export {
   PDFPreviewOverlay,
+  configurePdfWorker,
   type PDFPreviewOverlayProps,
 } from './overlay/PDFPreviewOverlay'
 
