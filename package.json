@@ -1,0 +1,74 @@
+{
+  "name": "react-craft-renderer",
+  "version": "0.1.0",
+  "description": "A rich Markdown renderer for React with Mermaid diagrams, interactive data tables, spreadsheets, JSON viewer, code highlighting, and fullscreen overlay system. Powered by Tailwind CSS 4.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./styles/craft-theme.css",
+    "./mermaid": "./src/mermaid/index.ts"
+  },
+  "files": [
+    "src",
+    "styles",
+    "skills"
+  ],
+  "keywords": [
+    "react",
+    "markdown",
+    "renderer",
+    "mermaid",
+    "datatable",
+    "spreadsheet",
+    "shiki",
+    "tailwindcss",
+    "overlay",
+    "code-highlighting"
+  ],
+  "author": "panyuhang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wensia/react-craft-renderer.git"
+  },
+  "homepage": "https://github.com/wensia/react-craft-renderer#readme",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tailwindcss": ">=4"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.2.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@uiw/react-json-view": "^2.0.0-alpha.41",
+    "clsx": "^2.1.1",
+    "elkjs": "^0.11.0",
+    "fflate": "^0.8.2",
+    "linkify-it": "^5.0.0",
+    "lucide-react": "^0.574.0",
+    "motion": "^12.34.2",
+    "nice-ticks": "^1.0.2",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-slug": "^6.0.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^3.22.0",
+    "tailwind-merge": "^3.5.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "react-pdf": "^9.0.0",
+    "pdfjs-dist": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/linkify-it": "^5.0.0",
+    "@types/mdast": "^4.0.4",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "~5.9.3"
+  }
+}
